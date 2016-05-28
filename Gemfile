@@ -25,6 +25,7 @@ gem "slim-rails"
 gem 'sqlite3'
 gem "nested_form"
 gem 'will_paginate', '~> 3.1.0'
+gem 'progress_bar'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
