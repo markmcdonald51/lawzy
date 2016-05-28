@@ -1,0 +1,29 @@
+h1 Listing irs_codes
+
+table
+  thead
+    tr
+      th Trans code
+      th Dr cr file
+      th Title
+      th Valid doc code
+      th Remarks
+      th
+      th
+      th
+
+  tbody
+    - @irs_codes.each do |irs_code|
+      tr
+        td = irs_code.trans_code
+        td = irs_code.dr_cr_file
+        td = irs_code.title
+        td = irs_code.valid_doc_code
+        td = irs_code.remarks
+        td = link_to 'Show', irs_code
+        td = link_to 'Edit', edit_irs_code_path(irs_code)
+        td = link_to 'Destroy', irs_code, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Irs code', new_irs_code_path

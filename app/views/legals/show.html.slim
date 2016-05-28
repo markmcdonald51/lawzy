@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @legal.title
+p
+  strong Body:
+  = @legal.body
+p
+  strong Parent:
+  = @legal.parent_id
+p
+  strong Source:
+  = @legal.source
+
+= link_to 'Edit', edit_legal_path(@legal)
+'|
+= link_to 'Back', legals_path

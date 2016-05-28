@@ -1,0 +1,24 @@
+= form_for @irs_code do |f|
+  - if @irs_code.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@irs_code.errors.count, "error")} prohibited this irs_code from being saved:"
+      ul
+        - @irs_code.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :trans_code
+    = f.text_field :trans_code
+  .field
+    = f.label :dr_cr_file
+    = f.text_field :dr_cr_file
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :valid_doc_code
+    = f.text_field :valid_doc_code
+  .field
+    = f.label :remarks
+    = f.text_area :remarks
+  .actions = f.submit

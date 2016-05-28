@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Trans code:
+  = @irs_code.trans_code
+p
+  strong Dr cr file:
+  = @irs_code.dr_cr_file
+p
+  strong Title:
+  = @irs_code.title
+p
+  strong Valid doc code:
+  = @irs_code.valid_doc_code
+p
+  strong Remarks:
+  = @irs_code.remarks
+
+= link_to 'Edit', edit_irs_code_path(@irs_code)
+'|
+= link_to 'Back', irs_codes_path

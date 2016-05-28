@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @dictionary.name
+p
+  strong Description:
+  = @dictionary.description
+p
+  strong Edition:
+  = @dictionary.edition
+p
+  strong Position:
+  = @dictionary.position
+
+= link_to 'Edit', edit_dictionary_path(@dictionary)
+'|
+= link_to 'Back', dictionaries_path

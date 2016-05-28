@@ -1,0 +1,27 @@
+h1 Listing legals
+
+table
+  thead
+    tr
+      th Title
+      th Body
+      th Parent
+      th Source
+      th
+      th
+      th
+
+  tbody
+    - @legals.each do |legal|
+      tr
+        td = legal.title
+        td = legal.body
+        td = legal.parent_id
+        td = legal.source
+        td = link_to 'Show', legal
+        td = link_to 'Edit', edit_legal_path(legal)
+        td = link_to 'Destroy', legal, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Legal', new_legal_path

@@ -1,0 +1,22 @@
+# Using a recent release (9.1 or higher) of PostgreSQL (http://postgresql.org/) is recommended.
+# See https://github.com/openstreetmap/openstreetmap-website/blob/master/INSTALL.md#database-setup for detailed setup instructions.
+#
+development2:
+  adapter: postgresql
+  database: db_name
+  username: username
+  host: localhost
+  encoding: utf8
+
+development:  
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/development.sqlite3
+
+
+
+# Warning: The database defined as 'test' will be erased and
+# re-generated from your development database when you run 'rake'.
+# Do not set this db to the same as development or production.
+

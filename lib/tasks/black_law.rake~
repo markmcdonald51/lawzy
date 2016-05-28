@@ -1,0 +1,95 @@
+namespace :BlacksLaw do
+
+  desc "BLacks Law"
+  task blacks_law_pdf_dump: :environment do
+
+    file_path = "#{Rails.root}/db/imports/blacks-law-5th-complete_030812.pdf"
+    # reader = PDF::Reader.new(file_path)
+    #reader = PDF::Reader.new("/media/removable/SD Card/TemplesOfBaal-11th.pdf")
+    
+    from_page_number, to_page_number = [1,10]
+    Docsplit.extract_text(file_path, {pdf_opts: '-layout',  
+      #pages: from_page_number..to_page_number, 
+      output: 'blacks_text_file'})
+      
+      
+=begin
+    reader.pages.each do |page|
+      #puts page.fonts
+      puts page.text
+      binding.pry
+      #puts page.raw_content
+    end
+=end
+    
+  end
+
+  def parse_line(l)
+    term, definition = nil
+    if (l =~ /^([A-Z]{1}.*?)\.(.*)/)
+      term = $1
+      definition = $2
+    elsif l =~ /^\s{1,4}(\w.*)/
+      definition = $1
+    end 
+    return [term, definition]
+  end
+
+  def save(term, definition)
+    definition.gsub!(/��         A/, '')
+    definition.gsub!(/\s+/, ' ')
+    puts '*' * 30
+    puts "new_term: #{term}"
+    puts "new_def: #{definition}"
+    
+    sleep 1
+  end
+  
+  desc "Blacks Law File parse"
+  task blacks_txt_parse: :environment do
+    start = false
+    right_side = ''; left_side = ''
+    full_page = ''
+    term, definition = nil
+    file = File.open('blacks_law_single_strans.txt','w');
+    File.open("#{Rails.root}/db/imports/blacks-law-5th-complete_030812.txt").each_line do |l|
+      #r1 = Regexp.new('^[A-Z]{1}.*\.')
+      #puts "line = #{l}" 
+      if start == false && l !~ /\W{35}FIFTH EDITION/
+        next
+      else
+        start = true
+      end  
+
+      next if l =~ /FIFTH EDITION/
+      #right_side, left_side = l[0..60], l[61..-1]   
+      
+      if l !~ /^\014/ 
+      
+      right_side, left_side = l[0..60], l[61..-1]   
+      
+      
+       next if l.blank?       
+      else
+        full_page  = right_side
+        full_page << left_side
+        right_side = ''; left_side = ''       
+        file.write(full_page)  
+      end
+    end   
+=begin
+      new_term, new_definition = parse_line(right_side)
+      
+      next if new_term.blank? && new_definition.blank?
+     
+      if new_term.present?
+        save(term, definition) unless definition.blank?   
+        term = new_term
+        definition = "#{new_definition}"
+      else
+        definition << new_definition    
+      end 
+    end
+=end    
+  end
+end

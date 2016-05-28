@@ -1,0 +1,2 @@
+class IrsCode < ApplicationRecord
+end

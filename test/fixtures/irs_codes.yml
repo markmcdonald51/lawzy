@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trans_code: MyString
+  dr_cr_file: MyString
+  title: MyString
+  valid_doc_code: MyString
+  remarks: MyText
+
+two:
+  trans_code: MyString
+  dr_cr_file: MyString
+  title: MyString
+  valid_doc_code: MyString
+  remarks: MyText
