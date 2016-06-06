@@ -1,0 +1,89 @@
+
+/ = form_tag(search_terms_path, method: :post, remote: true)
+
+  / = select_tag "q", [], style: "width: 90%", id: 'query_terms', \
+    data: { placeholder: "Search definitions" }
+  
+= f.input :query_terms, as: :select, multiple: true, data: { placeholder: "Search definitions" }
+
+javascript:
+
+  function formatRepo(repo) {
+    console.log('--------format repo------------');
+    console.log(repo);
+    if (repo.loading) return repo.text;
+
+    var markup = "<div class='select2-result-repository clearfix'>" +
+      "<div class='select2-result-repository__meta__NOT'>" +
+        "<div class='select2-result-repository__title'>" + (repo.field_label || repo.text)  +  ": " +  repo.field_note + "</div>";
+    
+    /*    
+
+      if (repo.field_note) {
+        markup += "<div class='select2-result-repository__description'>" + repo.field_note + "</div>";
+      }
+
+      if (repo.field_instructions) {
+        markup += "<div class='select2-result-repository__description'>" + repo.field_instructions + "</div>";
+      }
+
+      markup += "<div class='select2-result-repository__statistics'>" +
+        "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + " Source:</div>" +
+        "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.source_name  + " " + repo.udf_explorer_link + "</div>" +
+        "</div>" +
+        "</div></div>";
+    */
+
+    return markup;
+  }
+    
+  function formatRepoSelection(repo) {
+    console.log('called formatRepoSelection');
+    return (repo.field_label || repo.text);
+  }
+  
+  $("#search_query_terms").select2({
+    theme: "bootstrap",
+    ajax: {
+      url: "#{search_terms_path}",
+      dataType: 'json',
+      delay: 250,
+      data: function (params) {
+        var dict_ids = $( "#search_dictionary_ids" ).val();
+        console.log("Dict ids: " + dict_ids);
+        return {
+          q: params.term, // search term
+          search_dictionary_ids: dict_ids,
+          page: params.page
+        };
+      },
+      processResults: function (data, params) {
+        // parse the results into the format expected by Select2
+        // since we are using custom formatting functions we do not need to
+        // alter the remote JSON data, except to indicate that infinite
+        // scrolling can be used
+        params.page = params.page || 1;
+
+        return {
+          results: data.items,
+          pagination: {
+            more: (params.page * 30) < data.total_count
+          }
+        };
+      },
+      cache: true
+    },
+    escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+    minimumInputLength: 1,
+    templateResult: formatRepo, // omitted for brevity, see the source of this page
+    templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+  });
+  
+
+  
+  
+
+
+
+  
+

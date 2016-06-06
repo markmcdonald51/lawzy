@@ -79,4 +79,24 @@ namespace :Bouviers do
       end  
     end
   end  
+  
+  
+ 
+  desc "Latin Dict File parse"
+  task parse_latin: :environment do
+    dictionary = Dictionary.find_or_create_by(name: "Latin Dictionary")
+
+    doc = Nokogiri::HTML(open("http://comp.uark.edu/~mreynold/recint1.htm"))   
+    doc.css('p').each do |link|
+      puts link.content
+      term = link.css('b').text.strip.gsub(':', '')
+      definition = link.text.split(':').second.strip rescue nil
+      
+      if term && definition       
+        Term.create(name: term, definition: definition, 
+            dictionary: dictionary)
+      end     
+    end
+  end  
+  
 end

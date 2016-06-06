@@ -3,19 +3,14 @@ class Term < ApplicationRecord
   belongs_to :dictionary
   #validates_uniqueness_of :name, scope: :dictionary, allow: nil
   
-  
-  searchable do
-    text :name, :definition
-    #text :dictionay do
-    #  dict.map { |comment| comment.body }
-    #end
 
+ 
+  searchable do
+    text :name
+    text :definition
     integer :parent_id
     integer :dictionary_id
-    
-    #string  :sort_title do
-    #  title.downcase.gsub(/^(an?|the)/, '')
-    #end
   end  
+
   
 end

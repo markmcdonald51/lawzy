@@ -1,10 +1,13 @@
 class TermsController < ApplicationController
   before_action :set_term, only: [:show, :edit, :update, :destroy]
+  
+  skip_before_action :set_term, only: [:search]
 
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all.paginate(:page => params[:page])
+    #@terms = Term.all.paginate(:page => params[:page])
+    @terms = []
   end
 
   # GET /terms/1
@@ -60,6 +63,24 @@ class TermsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+  #.first.terms.limit(1).order("RANDOM()")
+  def search
+    if q = params[:q]
+      search_dictionary_ids = params[:search_dictionary_ids]
+      r = Term.search do 
+        fulltext q  do
+          boost_fields name: 2.0
+          phrase_fields definition: 2.0
+        end
+         with :dictionary_id, search_dictionary_ids  if search_dictionary_ids.present?
+      end
+      @results = r.results
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require chessboard.min
-//= require chess.min
+// require chessboard.min
+// require chess.min
+//= require select2
 //= require_tree .

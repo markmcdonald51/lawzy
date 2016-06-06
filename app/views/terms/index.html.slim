@@ -1,26 +1,41 @@
-h1 Listing terms
+= semantic_bootstrap_nested_form_for :search do |f|
+  .row
+    .col-md-1
+    .col-md-8
+      = render 'search_form', f: f
+    .col-md-3 
+      = f.input :dictionary_ids, as: :select, multiple: true, \
+        label: 'Using Dictionaries',
+        hint: 'default is search all', collection: Dictionary.all.pluck(:name, :id)
+    
 
-table.table.table-highlight
-  thead
-    tr
-      th Name
-      th Definition
+javascript:
+  $("#search_dictionary_ids").select2({
+    theme: "bootstrap",
+  });
 
-      th
-      th
-      th
+/
+  h1 Listing terms
 
-  tbody
-    - @terms.each do |term|
+  table.table.table-highlight
+    thead
       tr
-        td = term.name
-        td = term.definition
-        td = link_to 'Show', term
-        td = link_to 'Edit', edit_term_path(term)
-        td = link_to 'Destroy', term, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Name
+        th Definition
 
+        th
+        th
+        th
 
-= will_paginate @terms
-br
+    tbody
+      - @terms.each do |term|
+        tr
+          td = term.name
+          td = term.definition
+          td = link_to 'Show', term
+          td = link_to 'Edit', edit_term_path(term)
+          td = link_to 'Destroy', term, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'New Term', new_term_path
+  = will_paginate @terms
+  br
+  = link_to 'New Term', new_term_path

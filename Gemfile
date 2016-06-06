@@ -29,18 +29,25 @@ gem 'progress_bar'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+gem "paperclip", "~> 5.0.0.beta1"
 
-
+gem 'cancancan'
+#gem 'jquery-ace-rails'
+#gem 'auto-session-timeout'
 
 #gem 'acts_as_list'
 gem 'acts_as_tree' 
+gem 'acts_as_list'
 gem 'pdf-reader'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 gem "select2-rails"
 gem 'formtastic'
 gem 'formtastic-bootstrap'
+gem 'geocoder'
+gem 'aasm'
 
+gem 'sass-rails', '~> 5.0'
 
 
 gem 'docsplit', git: 'git://github.com/narutosanjiv/docsplit.git'

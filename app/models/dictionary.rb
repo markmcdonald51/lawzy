@@ -4,14 +4,4 @@ class Dictionary < ApplicationRecord
   
   
 
- 
-  
-  
-  
-  
-  
-  
-  
-  
-  
 end
