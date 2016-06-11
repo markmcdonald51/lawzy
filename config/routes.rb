@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :terms do
      get :search, on: :collection
   end
-  
- 
-  
+
   resources :dictionaries
   resources :irs_codes
   resources :legals
@@ -16,7 +14,6 @@ Rails.application.routes.draw do
   root 'admin/dashboard#index'
   get  'admin/dashboard/new_tab'
 
-
   get '/login', to: 'static_pages#home'
 
   # route for logged in user
@@ -26,7 +23,5 @@ Rails.application.routes.draw do
   post 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => 'sessions#failure'
   get 'signout' => 'sessions#destroy', as: 'signout'
-
-
 
 end

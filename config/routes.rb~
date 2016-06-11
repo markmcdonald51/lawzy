@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :terms do
      get :search, on: :collection
   end
-  
- 
-  
+
   resources :dictionaries
   resources :irs_codes
   resources :legals
@@ -15,7 +13,6 @@ Rails.application.routes.draw do
   #root 'dashboard#index'
   root 'admin/dashboard#index'
   get  'admin/dashboard/new_tab'
-
 
   get '/login', to: 'static_pages#home'
 
