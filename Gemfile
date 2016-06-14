@@ -52,6 +52,12 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'docsplit', git: 'git://github.com/narutosanjiv/docsplit.git'
 
+#gem 'rdf-stuff', git: 'git://github.com/markmcdonald51/rdf-stuff.git'
+gem 'sparql'
+gem 'rdf-raptor'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -4,7 +4,7 @@
   / = select_tag "q", [], style: "width: 90%", id: 'query_terms', \
     data: { placeholder: "Search definitions" }
   
-= f.input :query_terms, as: :select, multiple: true, data: { placeholder: "Search definitions" }
+= f.input :query_terms, as: :select, multiple: false, data: { placeholder: "Search definitions" }
 
 javascript:
 
