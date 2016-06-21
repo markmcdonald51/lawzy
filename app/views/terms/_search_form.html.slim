@@ -42,14 +42,14 @@ javascript:
     return (repo.field_label || repo.text);
   }
   
-  $("#search_query_terms").select2({
+  $("#search_terms").select2({
     theme: "bootstrap",
     ajax: {
       url: "#{search_terms_path}",
       dataType: 'json',
       delay: 250,
       data: function (params) {
-        var dict_ids = $( "#search_dictionary_ids" ).val();
+        var dict_ids = $("#search_dictionary_ids").val();
         console.log("Dict ids: " + dict_ids);
         return {
           q: params.term, // search term

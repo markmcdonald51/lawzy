@@ -8,6 +8,11 @@ class TermsController < ApplicationController
   def index
     #@terms = Term.all.paginate(:page => params[:page])
     @terms = []
+    
+  end
+  
+  def search_word 
+    binding.pry
   end
 
   # GET /terms/1

@@ -7,7 +7,12 @@ class TermsController < ApplicationController
   # GET /terms.json
   def index
     #@terms = Term.all.paginate(:page => params[:page])
-    @terms = ''
+    @terms = []
+    
+  end
+  
+  def search_word 
+    binding.pry
   end
 
   # GET /terms/1
