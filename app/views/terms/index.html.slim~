@@ -14,7 +14,7 @@
         
 
 javascript:
-  $("#search_dictionary_ids").select2({
+  $("#search_query_terms_input").select2({
     theme: "bootstrap",
   });
 

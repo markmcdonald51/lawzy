@@ -99,4 +99,22 @@ namespace :Bouviers do
     end
   end  
   
+  
+  desc "Fix commas and duplicte term in def"
+  task fix_text: :environment do
+  
+    #Term.where('name like "%,"').each do |t|
+    Dictionary.first.terms.each do |t|
+      new_name = t.name.gsub(/,+$/, '').downcase
+      new_definition = t.definition.gsub(/^\s?#{t.name}?,?\s/, '')
+      
+      t.name = new_name
+      t.definition = new_definition
+      t.save
+    end  
+  end 
+    
+  
+  
+  
 end

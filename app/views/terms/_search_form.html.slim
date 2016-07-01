@@ -1,10 +1,10 @@
 
 / = form_tag(search_terms_path, method: :post, remote: true)
 
-  / = select_tag "q", [], style: "width: 90%", id: 'query_terms', \
-    data: { placeholder: "Search definitions" }
+= select_tag "q", [], style: "width: 90%", id: 'query_terms', \
+  data: { placeholder: "Search definitions" }
   
-= f.input :query_terms, as: :select, multiple: false, data: { placeholder: "Search definitions" }
+  / = f.input :query_terms, as: :select, multiple: false, data: { placeholder: "Search definitions" }
 
 javascript:
 
@@ -15,7 +15,7 @@ javascript:
 
     var markup = "<div class='select2-result-repository clearfix'>" +
       "<div class='select2-result-repository__meta__NOT'>" +
-        "<div class='select2-result-repository__title'>" + (repo.field_label || repo.text)  +  ": " +  repo.field_note + "</div>";
+        "<div class='select2-result-repository__title'>" + (repo.field_label || repo.text)  +  ": " +  repo.source_name + " </div>";
     
     /*    
 
@@ -42,7 +42,7 @@ javascript:
     return (repo.field_label || repo.text);
   }
   
-  $("#search_terms").select2({
+  $("#query_terms").select2({
     theme: "bootstrap",
     ajax: {
       url: "#{search_terms_path}",

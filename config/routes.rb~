@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :terms do
     collection do 
       get :search
-      post :search_word
+      # post :search_word
     end 
   end
 
