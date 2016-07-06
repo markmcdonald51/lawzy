@@ -15,9 +15,15 @@ javascript:
 
     var markup = "<div class='select2-result-repository clearfix'>" +
       "<div class='select2-result-repository__meta__NOT'>" +
+        "<div class='select2-result-repository__title'>" + (repo.field_label || repo.text) + "<span class='select2-result-repository__description'>: " + repo.definition + "</span></div>";
+
+    /*  
+
+    var markup = "<div class='select2-result-repository clearfix'>" +
+      "<div class='select2-result-repository__meta__NOT'>" +
         "<div class='select2-result-repository__title'>" + (repo.field_label || repo.text)  +  ": " +  repo.source_name + " </div>";
     
-    /*    
+  
 
       if (repo.field_note) {
         markup += "<div class='select2-result-repository__description'>" + repo.field_note + "</div>";

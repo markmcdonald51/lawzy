@@ -6,6 +6,6 @@ json.items @results do |r|
 
   # json.field_label hit.highlight(:field_note).format { |fragment| content_tag(:em, fragment) }
 
-  json.source_name r.try(:dictionary).try(:name)
-  # json.field_note truncate(r.definition, length: 25, separator: ' ') 
+  json.source_name r.try(:dictionary).try(:name) if r.dictionary.id != 3
+  json.definition truncate(r.definition, length: 45, separator: ' ') 
 end
