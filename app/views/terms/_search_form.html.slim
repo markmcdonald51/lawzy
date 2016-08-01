@@ -50,6 +50,7 @@ javascript:
   
   $("#query_terms").select2({
     theme: "bootstrap",
+    allowClear: true,
     ajax: {
       url: "#{search_terms_path}",
       dataType: 'json',

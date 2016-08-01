@@ -54,8 +54,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'docsplit', git: 'git://github.com/narutosanjiv/docsplit.git'
 
 #gem 'rdf-stuff', git: 'git://github.com/markmcdonald51/rdf-stuff.git'
-gem 'sparql'
-gem 'rdf-raptor'
+#gem 'sparql'
+#gem 'rdf-raptor'
+
+gem 'aardvark'#, path: 'vendor/gems/aardvark/'
 
 
 

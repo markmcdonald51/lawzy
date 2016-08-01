@@ -1,6 +1,8 @@
 require 'sparql/client'
 require 'rdf/raptor'
 
+#https://github.com/griswoldbar/rdf-stuff/blob/master/lib/rdf-stuff.rb
+
 module Sconsole
   def movie_client
     SPARQL::Client.new("http://data.linkedmdb.org/sparql")
