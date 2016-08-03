@@ -41,6 +41,7 @@ class DictionariesController < ApplicationController
   # PATCH/PUT /dictionaries/1.json
   def update
     respond_to do |format|
+      binding.pry
       if @dictionary.update(dictionary_params)
         format.html { redirect_to @dictionary, notice: 'Dictionary was successfully updated.' }
         format.json { render :show, status: :ok, location: @dictionary }
@@ -69,6 +70,7 @@ class DictionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dictionary_params
-      params.require(:dictionary).permit(:name, :description, :edition, :position)
+    #params.require(:dictionary).permit!
+    params.require(:dictionary).permit(:name, :description, :edition, :position, :abbreviation, logo_attributes: [:asset])
     end
 end

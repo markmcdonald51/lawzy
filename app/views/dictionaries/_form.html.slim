@@ -1,4 +1,8 @@
-= form_for @dictionary do |f|
+-binding.pry
+- @dictionary.build_logo if @dictionary.logo.blank?
+
+
+= semantic_bootstrap_nested_form_for  @dictionary, html: { multipart: true } do |f|
   - if @dictionary.errors.any?
     #error_explanation
       h2 = "#{pluralize(@dictionary.errors.count, "error")} prohibited this dictionary from being saved:"
@@ -6,16 +10,15 @@
         - @dictionary.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :edition
-    = f.text_field :edition
-  .field
-    = f.label :position
-    = f.number_field :position
-  .actions = f.submit
+  = f.inputs :name, :description, :edition, :abbreviation
+  / 
+    = f.input :logo, as: :file
+
+  
+  = f.semantic_fields_for :logo do |attachment_f| 
+    = attachment_f.input :asset
+
+  = f.actions  
+    
+  
+  

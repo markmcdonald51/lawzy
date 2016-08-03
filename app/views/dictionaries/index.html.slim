@@ -6,7 +6,7 @@ table
       th Name
       th Description
       th Edition
-      th Position
+      th Abbreviation
       th
       th
       th
@@ -17,7 +17,7 @@ table
         td = dictionary.name
         td = dictionary.description
         td = dictionary.edition
-        td = dictionary.position
+        td = dictionary.abbreviation
         td = link_to 'Show', dictionary
         td = link_to 'Edit', edit_dictionary_path(dictionary)
         td = link_to 'Destroy', dictionary, data: {:confirm => 'Are you sure?'}, :method => :delete

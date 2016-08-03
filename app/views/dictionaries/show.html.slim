@@ -1,9 +1,14 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @dictionary.name
-p
+.well.well-sm
+  h2 = @dictionary.name
+  = @dictionary.description
+
+p  
+  strong Abbreviation:
+  = @dictionary.abbreviation
+
+p  
   strong Description:
   = @dictionary.description
 p
@@ -13,6 +18,14 @@ p
   strong Position:
   = @dictionary.position
 
+
+- if @dictionary.try(:logo)
+  p
+    strong Logo:
+    - @dictionary.logo.asset.styles.keys.each do |s| 
+      = image_tag @dictionary.logo.asset.url(s)
+      = s.to_s
+    
 = link_to 'Edit', edit_dictionary_path(@dictionary)
 '|
 = link_to 'Back', dictionaries_path

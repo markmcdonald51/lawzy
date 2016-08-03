@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,15 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528185021) do
+ActiveRecord::Schema.define(version: 20160803134129) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.string   "name"
+    t.text     "summary"
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.integer  "position"
+    t.string   "usage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
+    t.index ["usage"], name: "index_attachments_on_usage"
+  end
 
   create_table "dictionaries", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.string   "edition"
     t.integer  "position"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "abbreviation"
   end
 
   create_table "irs_codes", force: :cascade do |t|
