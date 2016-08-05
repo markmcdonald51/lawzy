@@ -1,23 +1,27 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @term.name
-p
-  strong Definition:
-  = @term.definition
-p
-  strong Parent:
-  = @term.parent_id
-p
-  strong Dictionary:
-  = @term.dictionary
-p
-  strong Position:
-  = @term.position
+h1.bg-info = @term.name
+
+/
+
+  p
+    strong Definition:
+    = @term.definition
+  p
+    strong Parent:
+    = @term.parent_id
+  p
+    strong Dictionary:
+    = @term.dictionary
+  p
+    strong Position:
+    = @term.position
+    
+    
   
- 
-= render partial: 'dict_term', collection: @found_terms 
+- @found_terms.in_groups_of(3) do |terms|
+  .row
+    = render partial: 'dict_term', collection: terms.compact
    
     
 

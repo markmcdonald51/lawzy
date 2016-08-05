@@ -1,14 +1,12 @@
 class TermsController < ApplicationController
   before_action :set_term, only: [:show, :edit, :update, :destroy]
-  
   skip_before_action :set_term, only: [:search, :search_word]
 
   # GET /terms
   # GET /terms.json
   def index
     #@terms = Term.all.paginate(:page => params[:page])
-    @terms = []
-    
+    @terms = [] 
   end
   
   def search_word 

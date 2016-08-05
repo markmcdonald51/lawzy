@@ -1,0 +1,16 @@
+.col-md-4
+  .well.well-lg
+    h2 = dict_term.dictionary.name 
+    / h3 = dict_term.name
+    = dict_term.definition
+
+    p    
+    .row
+
+        = link_to 'Warn', edit_term_path(dict_term), :class => "btn btn-warning"
+
+        = link_to 'Make Note', edit_term_path(dict_term), :class => "btn btn-success"
+
+        = link_to 'Danger!', edit_term_path(dict_term), :class => "btn btn-danger"
+        = link_to 'Edit', edit_term_path(dict_term), :class => "btn btn-info"
+    

@@ -1,12 +1,13 @@
 
 = semantic_bootstrap_nested_form_for @term do |f|
-  - if @term.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@term.errors.count, "error")} prohibited this term from being saved:"
-        ul
-          - @term.errors.full_messages.each do |message|
-            li = message
+  /
+    - if @term.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@term.errors.count, "error")} prohibited this term from being saved:"
+          ul
+            - @term.errors.full_messages.each do |message|
+              li = message
 
-    
-  = f.inputs
+  = f.input :dictionary, :input_html => { :disabled => true } 
+  = f.inputs  :name, :definition
   

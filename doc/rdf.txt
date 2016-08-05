@@ -1,0 +1,15 @@
+
+https://github.com/griswoldbar/rdf-stuff/blob/master/lib/rdf-stuff.rb
+
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX sc: <http://schema.org/>
+SELECT ?id? ?personb ?sex
+WHERE {
+ wd:Q6982 WD:P40s ?code .
+?code wd: P40v ?id .
+?id wd:P21s ?sexcode .
+?sex_code wd:p21v ?sex .
+OPTIONAL { ?personb sc:about ?id . }
+
+}
+
