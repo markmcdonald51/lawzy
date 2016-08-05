@@ -1,7 +1,7 @@
 class TermsController < ApplicationController
   before_action :set_term, only: [:show, :edit, :update, :destroy]
   
-  skip_before_action :set_term, only: [:search]
+  skip_before_action :set_term, only: [:search, :search_word]
 
   # GET /terms
   # GET /terms.json
@@ -12,17 +12,17 @@ class TermsController < ApplicationController
   end
   
   def search_word 
-    search_term_id = params[:q]
-    websters_term = Term.find_by(id: search_term_id, dictionary_id: 3)
-
-    #t = Term.where(name: 'person').where("dictionary_id in (?)", [1, 2, 4, 5]).includes(:dictionary)    
-    t = Term.where(name: 'person').includes(:dictionary)
-    
+    if @term = Term.find(params[:q])
+      @found_terms = Term.where(name: term.name)
+    end
+    render :show
   end
 
   # GET /terms/1
   # GET /terms/1.json
   def show
+  
+  
   end
 
   # GET /terms/new
