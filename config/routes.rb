@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :term_search_logs
+  resources :parts_of_speeches
   resources :terms do
     collection do 
       get :search

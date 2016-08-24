@@ -1,0 +1,23 @@
+h1 Listing term_search_logs
+
+table
+  thead
+    tr
+      th Term
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @term_search_logs.each do |term_search_log|
+      tr
+        td = term_search_log.term
+        td = term_search_log.user
+        td = link_to 'Show', term_search_log
+        td = link_to 'Edit', edit_term_search_log_path(term_search_log)
+        td = link_to 'Destroy', term_search_log, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Term search log', new_term_search_log_path

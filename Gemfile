@@ -59,6 +59,7 @@ gem 'docsplit', git: 'git://github.com/narutosanjiv/docsplit.git'
 
 gem 'aardvark'#, path: 'vendor/gems/aardvark/'
 
+#gem 'active_scaffold'
 
 
 # Use ActiveModel has_secure_password

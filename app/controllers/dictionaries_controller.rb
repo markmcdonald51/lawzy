@@ -41,7 +41,6 @@ class DictionariesController < ApplicationController
   # PATCH/PUT /dictionaries/1.json
   def update
     respond_to do |format|
-      binding.pry
       if @dictionary.update(dictionary_params)
         format.html { redirect_to @dictionary, notice: 'Dictionary was successfully updated.' }
         format.json { render :show, status: :ok, location: @dictionary }

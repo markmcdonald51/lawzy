@@ -23,10 +23,9 @@ def parse_site_content(page: 0 ,letter: 'a',
    
     #term = link.css('.title a').text.downcase
     #definition = link.css('.entry').text.gsub(/\s+/, ' ')         
-    #if term && definition       
-     # Term.create(name: term.strip, definition: definition.strip, 
-     # dictionary: dictionary)
-    #end    
+    if term && definition       
+      Term.create(name: term.strip, definition: definition.strip, dictionary: dictionary)
+    end    
   end 
   total_pages = doc.css('.paging li').count / 2
   page += 1
@@ -39,8 +38,34 @@ end
     url = 'http://www.etymonline.com/index.php?allowed_in_frame=0&p=0&&l='  
     ('a'..'z').to_a.each do |letter| 
       #parse_site_content("#{url}#{letter}/")
-      parse_site_content(letter: letter,  page: 58)
+      parse_site_content(letter: letter)
     end 
-  end 
+  end
+  
+  desc "Fix etymology terms"
+  task fix_etymology_terms: :environment do
+    d = Dictionary.find 6
+    
+    d.terms.each do |t|
+      puts "name: #{t.name}"
+      
+      m = t.name.match(/(\w+) \((\w+\.)\)/)
+      name, abbreviation = m[1,2] rescue next
+      
+      pos = PartsOfSpeech.find_or_create_by(abbreviation: abbreviation)
+      
+      t.name = name
+      t.parts_of_speech = pos
+      t.save
+      puts name 
+      puts abbreviation
+      puts '*' * 20
+    end
+ 
+  end
+  
+  
+  
+   
 
 end

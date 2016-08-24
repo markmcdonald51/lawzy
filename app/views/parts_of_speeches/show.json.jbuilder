@@ -1,0 +1,1 @@
+json.partial! "parts_of_speeches/parts_of_speech", parts_of_speech: @parts_of_speech

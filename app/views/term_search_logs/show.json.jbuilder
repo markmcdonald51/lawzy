@@ -1,0 +1,1 @@
+json.partial! "term_search_logs/term_search_log", term_search_log: @term_search_log

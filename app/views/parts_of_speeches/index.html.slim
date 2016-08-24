@@ -1,0 +1,25 @@
+h1 Listing parts_of_speeches
+
+table
+  thead
+    tr
+      th Name
+      th Abbreviation
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @parts_of_speeches.each do |parts_of_speech|
+      tr
+        td = parts_of_speech.name
+        td = parts_of_speech.abbreviation
+        td = parts_of_speech.description
+        td = link_to 'Show', parts_of_speech
+        td = link_to 'Edit', edit_parts_of_speech_path(parts_of_speech)
+        td = link_to 'Destroy', parts_of_speech, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Parts of speech', new_parts_of_speech_path

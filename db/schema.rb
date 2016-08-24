@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803134129) do
+ActiveRecord::Schema.define(version: 20160824142531) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "asset_file_name"
@@ -59,15 +59,32 @@ ActiveRecord::Schema.define(version: 20160803134129) do
     t.index ["parent_id"], name: "index_legals_on_parent_id"
   end
 
+  create_table "parts_of_speeches", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.text     "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "term_search_logs", force: :cascade do |t|
+    t.integer  "term_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["term_id"], name: "index_term_search_logs_on_term_id"
+    t.index ["user_id"], name: "index_term_search_logs_on_user_id"
+  end
+
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.text     "definition"
     t.integer  "parent_id"
     t.integer  "dictionary_id"
     t.integer  "position"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "part_of_speech"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "parts_of_speech_id"
     t.index ["dictionary_id"], name: "index_terms_on_dictionary_id"
     t.index ["name"], name: "index_terms_on_name"
   end

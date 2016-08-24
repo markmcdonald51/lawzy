@@ -11,16 +11,15 @@ class TermsController < ApplicationController
   
   def search_word 
     if @term = Term.find(params[:q])
-      @found_terms = Term.where(name: @term.name)
+      @found_terms = Term.where(name: @term.name).includes(:dictionary).order('dictionaries.position')
     end
+    @term.users << current_user 
     render :show
   end
 
   # GET /terms/1
   # GET /terms/1.json
   def show
-  
-  
   end
 
   # GET /terms/new
@@ -77,12 +76,15 @@ class TermsController < ApplicationController
   #.first.terms.limit(1).order("RANDOM()")
   def search
     if q = params[:q]
-      search_dictionary_ids = params[:search_dictionary_ids].present? ? params[:search_dictionary_ids] : [3]
+      search_dictionary_ids = params[:search_dictionary_ids].present? \
+        ? params[:search_dictionary_ids] : [3]
+      
       r = Term.search do 
         fulltext q  do
           boost_fields name: 2.0
           phrase_fields definition: 2.0
         end
+        #order_by :position, :asc
         with :dictionary_id, search_dictionary_ids  if search_dictionary_ids.present?
       end
       @results = r.results

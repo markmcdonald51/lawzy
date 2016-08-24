@@ -1,27 +1,4 @@
-= semantic_bootstrap_nested_form_for :search,  url: search_word_terms_path, id: 'search_terms', method: :post do |f|
-  .row
-    .col-md-3
-    .col-md-5
-      = render 'search_form', f: f
-    .col-md-1 
-      = f.actions do
-        = f.action :submit, as: :button, label: 'Search', button_html: {class: "btn btn-success btn-lg pull-left"}
- 
-    .col-md-3 
-  .row
-    .col-md-4
-    .col-md-4     
-    .col-md-3
-      #select_dictionary   
-        = f.input :dictionary_ids, as: :select, multiple: true, \
-          label: 'Using Dictionaries',
-          hint: 'default is search all', collection: Dictionary.all.pluck(:name, :id)
-        
-
-javascript:
-  $("#search_dictionary_ids").select2({
-    theme: "bootstrap",
-  });
+= render 'search_form'
 
 /
   h1 Listing terms

@@ -1,8 +1,8 @@
-= semantic_bootstrap_nested_form_for :search,  url: search_word_terms_path, id: 'search_terms', method:post do |f|
+= semantic_bootstrap_nested_form_for :search,  url: search_word_terms_path, id: 'search_terms', method: :post do |f|
   .row
     .col-md-3
     .col-md-5
-      = render 'search_form', f: f
+      = render 'select2_form', f: f
     .col-md-1 
       = f.actions do
         = f.action :submit, as: :button, label: 'Search', button_html: {class: "btn btn-success btn-lg pull-left"}

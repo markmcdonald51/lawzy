@@ -1,0 +1,1 @@
+json.array! @term_search_logs, partial: 'term_search_logs/term_search_log', as: :term_search_log

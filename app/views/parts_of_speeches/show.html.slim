@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @parts_of_speech.name
+p
+  strong Abbreviation:
+  = @parts_of_speech.abbreviation
+p
+  strong Description:
+  = @parts_of_speech.description
+
+= link_to 'Edit', edit_parts_of_speech_path(@parts_of_speech)
+'|
+= link_to 'Back', parts_of_speeches_path

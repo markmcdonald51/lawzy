@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
   has_many :list_configurations
 =end
 
+  has_many :term_search_logs  #
+  has_many :searched_terms, through: :term_search_logs, source: :term
+
   geocoded_by :postal_code, latitude: :lat, longitude: :lng  do |obj,results|
     if geo = results.first
       obj.lat = geo.latitude

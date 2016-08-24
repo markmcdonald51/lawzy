@@ -1,0 +1,2 @@
+class PartsOfSpeech < ApplicationRecord
+end

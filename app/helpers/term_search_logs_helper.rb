@@ -1,0 +1,2 @@
+module TermSearchLogsHelper
+end

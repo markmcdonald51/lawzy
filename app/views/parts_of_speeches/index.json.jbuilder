@@ -1,0 +1,1 @@
+json.array! @parts_of_speeches, partial: 'parts_of_speeches/parts_of_speech', as: :parts_of_speech

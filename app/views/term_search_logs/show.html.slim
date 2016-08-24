@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Term:
+  = @term_search_log.term
+p
+  strong User:
+  = @term_search_log.user
+
+= link_to 'Edit', edit_term_search_log_path(@term_search_log)
+'|
+= link_to 'Back', term_search_logs_path
