@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824142531) do
+ActiveRecord::Schema.define(version: 20160831163915) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "asset_file_name"
@@ -70,8 +70,9 @@ ActiveRecord::Schema.define(version: 20160824142531) do
   create_table "term_search_logs", force: :cascade do |t|
     t.integer  "term_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "search_count", default: 1
     t.index ["term_id"], name: "index_term_search_logs_on_term_id"
     t.index ["user_id"], name: "index_term_search_logs_on_user_id"
   end
@@ -82,9 +83,10 @@ ActiveRecord::Schema.define(version: 20160824142531) do
     t.integer  "parent_id"
     t.integer  "dictionary_id"
     t.integer  "position"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "parts_of_speech_id"
+    t.integer  "count_of_searches",  default: 0
     t.index ["dictionary_id"], name: "index_terms_on_dictionary_id"
     t.index ["name"], name: "index_terms_on_name"
   end
