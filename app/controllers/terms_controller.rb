@@ -10,16 +10,30 @@ class TermsController < ApplicationController
   end
   
   def search_word 
+  #  if term = Term.find(params[:q])
+  #    redirect_to :show, id: term
+  #  end
+    redirect_to action: :show, id: params[:q]
+  end   
+    
+  
+=begin  
     if @term = Term.find(params[:q])
       @found_terms = Term.where(name: @term.name).includes(:dictionary).order('dictionaries.position')
     end
     @term.users << current_user 
     render :show
-  end
+=end
+    
+ # end
 
   # GET /terms/1
   # GET /terms/1.json
   def show
+   if @term   
+      @found_terms = Term.where(name: @term.name).includes(:dictionary).order('dictionaries.position')
+    end
+    @term.users << current_user
   end
 
   # GET /terms/new
